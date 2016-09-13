@@ -1,7 +1,7 @@
 // true: Capture will automatically begin upon mission start
 // false: Capture will not begin until set to true (e.g. in mission init.sqf) AND ocap_minPlayerCount is met.
 // Setting to false allows for mission-specific capture
-ocap_capture = true;
+GVAR(capture) = true;
 
 // true: Export capture files to a remote server via FTP (use if web server and game server are separate boxes)
 // false: Export capture files locally (use if web server and game server run on the same box)
@@ -33,9 +33,9 @@ ocap_exportPath = "C:/apache/htdocs/ocap/"; // e.g. "C:/apache/htdocs/ocap/"
 
 ocap_exportURL = "http://localhost/ocap/"; // URL to OCAP root directory (must include trailing '/')
 ocap_frameCaptureDelay = 1; // Delay between each frame capture. Default: 1
-ocap_minPlayerCount = 4; // Minimum player count before capture begins. Set this to 0 for immediate capture (assuming ocap_endCaptureOnNoPlayers = false)
+ocap_minPlayerCount = 1; // Minimum player count before capture begins. Set this to 0 for immediate capture (assuming ocap_endCaptureOnNoPlayers = false)
 
 // End (and export) capture once players are no longer present
 ocap_endCaptureOnNoPlayers = true;
 
-ocap_debug = true; // Debug mode
+GVAR(debug) = true; // Debug mode

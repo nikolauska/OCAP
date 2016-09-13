@@ -3,7 +3,7 @@
 
 	Description:
 	Calls extension (dll) and supplies given arguments.
-	
+
 	Extension is intended to be called multiple times to write
 	successive JSON 'chunks' to a file. Once there is no more data
 	to write, the extension should be called a final time (transfer mode)
@@ -14,9 +14,8 @@
 	_this select 0: STRING - Data to output to extension (e.g. JSON)
 	_this select 1: BOOLEAN - True for write mode, false for transfer mode.
 */
-
-_output = _this select 0;
-_write = _this select 1;
+#include "x\ocap\addons\main\script_component.hpp"
+params ["_output","_write"];
 
 if (_write) then {
 	// Write string to file
@@ -24,7 +23,7 @@ if (_write) then {
 } else {
 	_worldName = worldName;
 	_missionName = briefingName;
-	_missionDuration = ocap_endFrameNo * ocap_frameCaptureDelay; // Duration of mission (seconds)
+	_missionDuration = GVAR(endFrameNo) * ocap_frameCaptureDelay; // Duration of mission (seconds)
 
 	// Transfer file to different location (local or remote)
 	if (ocap_exportRemote) then {

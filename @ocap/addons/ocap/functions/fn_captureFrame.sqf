@@ -32,13 +32,13 @@
 */
 #include "x\ocap\addons\main\script_component.hpp"
 
-if (!ocap_capture) exitWith {};
+if (!GVAR(capture)) exitWith {};
 
 _sT = diag_tickTime;
 {
-	if (!(_x getVariable ["ocap_exclude", false])) then {
+	if (!(_x getVariable [QGVAR(exclude), false])) then {
 		if (_x isKindOf "Logic") exitWith {
-			_x setVariable ["ocap_exclude", true];
+			_x setVariable [QGVAR(exclude), true];
 		};
 
 		_pos = getPosATL _x;
@@ -47,10 +47,10 @@ _sT = diag_tickTime;
 		_alive = alive _x;
 		_isUnit = _x isKindOf "CAManBase";
 
-		if (!(_x getVariable ["ocap_isInitialised", false])) then { // Setup entity if not initialised
+		if (!(_x getVariable [QGVAR(isInitialised), false])) then { // Setup entity if not initialised
 			if (_alive) then { // Only init alive entities
-				_x setVariable ["ocap_exclude", false];
-				_x setVariable ["ocap_id", GVAR(id)];
+				_x setVariable [QGVAR(exclude), false];
+				_x setVariable [QGVAR(id), GVAR(id)];
 
 				if (_isUnit) then {
 						GVAR(entitiesData) pushBack [
@@ -69,31 +69,31 @@ _sT = diag_tickTime;
 				_x call ocap_fnc_addEventHandlers;
 				GVAR(id) = GVAR(id) + 1;
 
-				_x setVariable ["ocap_isInitialised", true];
-				if (ocap_debug) then {systemChat format["Initialised %1.", str(_x)]};
+				_x setVariable [QGVAR(isInitialised), true];
+				if (GVAR(debug)) then {systemChat format["Initialised %1.", str(_x)]};
 			};
 		} else { // Update position data for this entity
 			if (_isUnit) then {
 				// Get entity data from entitiesData array, select positions entry, push new data to it
-				((GVAR(entitiesData) select (_x getVariable "ocap_id")) select 1) pushBack [_pos, _dir, _alive, (vehicle _x) != _x];
+				((GVAR(entitiesData) select (_x getVariable QGVAR(id))) select 1) pushBack [_pos, _dir, _alive, (vehicle _x) != _x];
 			} else {
 				// Get ID for each crew member
 				_crew = [];
 				{
-					if (_x getVariable ["ocap_isInitialised", false]) then {
-						_crew pushBack (_x getVariable "ocap_id");
+					if (_x getVariable [QGVAR(isInitialised), false]) then {
+						_crew pushBack (_x getVariable QGVAR(id));
 					};
 				} forEach (crew _x);
 
 				// Get entity data from entitiesData array, select positions entry, push new data to it
-				((GVAR(entitiesData) select (_x getVariable "ocap_id")) select 1) pushBack [_pos, _dir, _alive, _crew];
+				((GVAR(entitiesData) select (_x getVariable QGVAR(id))) select 1) pushBack [_pos, _dir, _alive, _crew];
 			};
 		};
 	};
 } forEach (allUnits + allDead + (entities "LandVehicle") + (entities "Ship") + (entities "Air"));
 
 _string = format["Captured frame %1 (%2ms).", GVAR(FrameNo), (diag_tickTime - _sT)*1000];
-if (ocap_debug) then {
+if (GVAR(debug)) then {
 	systemChat _string;
 };
 

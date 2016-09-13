@@ -1,5 +1,5 @@
 #include "x\ocap\addons\main\script_component.hpp"
-_dead = [];
+private _dead = [];
 {
     _x params ["_projectile","_unit","_frame","_lastPos"];
     if(!alive _projectile) {

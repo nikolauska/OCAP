@@ -17,5 +17,5 @@
 	_this select 0: OBJECT - Unit that fired
 	_this select 6: OBJECT - Projectile that was fired
 */
-#include "x\ocap\addons\main\script_component.hpp"
+#include "\x\ocap\addons\main\script_component.hpp"
 GVAR(projectiles) pushback [_this select 6,_this select 0,GVAR(FrameNo),getPos (_this select 6)];

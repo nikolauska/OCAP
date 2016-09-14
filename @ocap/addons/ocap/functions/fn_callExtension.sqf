@@ -14,37 +14,37 @@
 	_this select 0: STRING - Data to output to extension (e.g. JSON)
 	_this select 1: BOOLEAN - True for write mode, false for transfer mode.
 */
-#include "x\ocap\addons\main\script_component.hpp"
+#include "\x\ocap\addons\main\script_component.hpp"
 params ["_output","_write"];
 
 if (_write) then {
 	// Write string to file
-	"ocap_exporter" callExtension format["{write;%1}%2", ocap_exportCapFilename, _output];
+	"ocap_exporter" callExtension format["{write;%1}%2", GVAR(exportCapFilename), _output];
 } else {
 	_worldName = worldName;
 	_missionName = briefingName;
-	_missionDuration = GVAR(endFrameNo) * ocap_frameCaptureDelay; // Duration of mission (seconds)
+	_missionDuration = GVAR(endFrameNo) * GVAR(frameCaptureDelay); // Duration of mission (seconds)
 
 	// Transfer file to different location (local or remote)
-	if (ocap_exportRemote) then {
+	if (GVAR(exportRemote)) then {
 		"ocap_exporter" callExtension format["{transferRemote;%1;%2;%3;%4;%5;%6;%7;%8}",
-			ocap_exportCapFilename,
+			GVAR(exportCapFilename),
 			_worldName,
 			_missionName,
 			_missionDuration,
-			ocap_exportURL,
-			ocap_exportHost,
-			ocap_exportUsername,
-			ocap_exportPassword
+			ocap_main_exportURL,
+			ocap_main_exportHost,
+			ocap_main_exportUsername,
+			ocap_main_exportPassword
 		];
 	} else {
 		"ocap_exporter" callExtension format["{transferLocal;%1;%2;%3;%4;%5;%6}",
-			ocap_exportCapFilename,
+			GVAR(exportCapFilename),
 			_worldName,
 			_missionName,
 			_missionDuration,
-			ocap_exportURL,
-			ocap_exportPath
+			ocap_main_exportURL,
+			ocap_main_exportPath
 		];
 	};
 };

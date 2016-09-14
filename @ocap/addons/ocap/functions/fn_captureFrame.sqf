@@ -30,7 +30,7 @@
 		etc...
 	]
 */
-#include "x\ocap\addons\main\script_component.hpp"
+#include "\x\ocap\addons\main\script_component.hpp"
 
 if (!GVAR(capture)) exitWith {};
 

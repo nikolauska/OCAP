@@ -5,7 +5,7 @@
 	Converts all capture data (events + entities) into a JSON format and outputs this string
 	to the OCAP extension (which handles JSON file writing/moving).
 */
-#include "x\ocap\addons\main\script_component.hpp"
+#include "\x\ocap\addons\main\script_component.hpp"
 ["Exporting capture data..."] call ocap_fnc_log;
 
 // Same as isKindOf, but can be tested against multiple types
@@ -24,7 +24,7 @@ _isKindOf = {
 
 GVAR(capture) = false;
 GVAR(endFrameNo) = GVAR(FrameNo);
-ocap_exportCapFilename = format["%1_%2.json", missionName, floor(random(1000))]; // Filename used for capture data file
+GVAR(exportCapFilename) = format["%1_%2.json", missionName, floor(random(1000))]; // Filename used for capture data file
 
 _br = toString [13, 10];
 _tab = toString[9];
@@ -47,7 +47,7 @@ _tankClasses = [
 
 // Write main header
 _header = format['{"worldName":"%1","missionName":"%2","missionAuthor":"%3","captureDelay":%4,"endFrame":%5
-',worldName, briefingName, getMissionConfigValue ["author", ""], ocap_frameCaptureDelay, GVAR(endFrameNo)];
+',worldName, briefingName, getMissionConfigValue ["author", ""], GVAR(frameCaptureDelay), GVAR(endFrameNo)];
 [_header, true] call ocap_fnc_callExtension;
 
 // Write entities

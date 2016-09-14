@@ -16,7 +16,7 @@
 	_this select 0: OBJECT - Victim
 	_this select 1: OBJECT - Killer
 */
-#include "x\ocap\addons\main\script_component.hpp"
+#include "\x\ocap\addons\main\script_component.hpp"
 params ["_victim","_killer"];
 
 if (_victim getVariable [QGVAR(exclude), false]) exitWith {}; // Just in case

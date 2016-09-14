@@ -9,7 +9,7 @@
 	Parameters:
 	_this: OBJECT - Entity that disconnected.
 */
-#include "x\ocap\addons\main\script_component.hpp"
+#include "\x\ocap\addons\main\script_component.hpp"
 
 _name = _this;
 GVAR(eventsData) pushBack [

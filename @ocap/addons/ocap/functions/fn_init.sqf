@@ -5,7 +5,7 @@
 	Initialises OCAP variables and mission-wide eventhandlers.
 	Capture loop is automatically started once init complete.
 */
-#include "x\ocap\addons\main\script_component.hpp"
+#include "\x\ocap\addons\main\script_component.hpp"
 //if (!isServer) exitWith {};
 
 // Define global vars
@@ -70,5 +70,5 @@ if (GVAR(debug)) then {
 	}];
 };
 
-[{[] call ocap_fnc_captureFrame}, ocap_frameCaptureDelay] call CBA_fnc_addPerFrameHandler;
-[{[] call ocap_fnc_handleProjectiles}, ocap_frameCaptureDelay] call CBA_fnc_addPerFrameHandler;
+[{[] call ocap_fnc_captureFrame}, GVAR(frameCaptureDelay)] call CBA_fnc_addPerFrameHandler;
+[{[] call ocap_fnc_handleProjectiles}, GVAR(frameCaptureDelay)] call CBA_fnc_addPerFrameHandler;

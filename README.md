@@ -13,7 +13,7 @@
     <a href="https://github.com/mistergoodson/OCAP/releases">
         <img src="https://img.shields.io/github/downloads/mistergoodson/OCAP/total.svg?style=flat-square&label=Downloads" alt="OCAP Downloads">
     </a>
-    <a href="https://github.com/mistergoodson/OCAP/blob/master/LICENSE">
+    <a href="https://github.com/mistergoodson/OCAP/blob/master/licence.txt">
         <img src="https://img.shields.io/badge/License-GPLv3-red.svg?style=flat-square" alt="OCAP License">
     </a>
 </p>

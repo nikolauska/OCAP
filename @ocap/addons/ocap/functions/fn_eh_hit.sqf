@@ -19,26 +19,26 @@
 #include "\x\ocap\addons\main\script_component.hpp"
 params ["_victim","_killer"];
 
-if (_victim getVariable [QGVAR(exclude), false]) exitWith {}; // Just in case
+if (_victim getVariable ["ocap_main_exclude", false]) exitWith {}; // Just in case
 
-_victimId = _victim getVariable QGVAR(id);
+_victimId = _victim getVariable "ocap_main_id";
 
 // If hitter is null, then unit likely hit by fire/collision/exploding vehicle
-_eventData = [GVAR(FrameNo), "hit", _victimId, ["null"], -1];
+_eventData = [ocap_main_FrameNo, "hit", _victimId, ["null"], -1];
 if (!isNull _hitter) then {
 
 	_hitterInfo = [];
 	if (_hitter isKindOf "CAManBase") then {
 		_hitterInfo = [
-			_hitter getVariable QGVAR(id),
+			_hitter getVariable "ocap_main_id"),
 			getText (configFile >> "CfgWeapons" >> currentWeapon _hitter >> "displayName")
 		];
 	} else {
-		_hitterInfo = [_hitter getVariable QGVAR(id)];
+		_hitterInfo = [_hitter getVariable "ocap_main_id")];
 	};
 
 	_eventData = [
-		GVAR(FrameNo),
+		ocap_main_FrameNo,
 		"hit",
 		_victimId,
 		_hitterInfo,
@@ -46,4 +46,4 @@ if (!isNull _hitter) then {
 	];
 };
 
-GVAR(eventsData) pushBack _eventData;
+ocap_main_eventsData) pushBack _eventData;

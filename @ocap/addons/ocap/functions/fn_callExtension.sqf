@@ -19,16 +19,16 @@ params ["_output","_write"];
 
 if (_write) then {
 	// Write string to file
-	"ocap_exporter" callExtension format["{write;%1}%2", GVAR(exportCapFilename), _output];
+	"ocap_exporter" callExtension format["{write;%1}%2", ocap_main_exportCapFilename, _output];
 } else {
 	_worldName = worldName;
 	_missionName = briefingName;
-	_missionDuration = GVAR(endFrameNo) * GVAR(frameCaptureDelay); // Duration of mission (seconds)
+	_missionDuration = ocap_main_endFrameNo * ocap_main_frameCaptureDelay; // Duration of mission (seconds)
 
 	// Transfer file to different location (local or remote)
-	if (GVAR(exportRemote)) then {
+	if (ocap_main_exportRemote) then {
 		"ocap_exporter" callExtension format["{transferRemote;%1;%2;%3;%4;%5;%6;%7;%8}",
-			GVAR(exportCapFilename),
+			ocap_main_exportCapFilename,
 			_worldName,
 			_missionName,
 			_missionDuration,
@@ -39,7 +39,7 @@ if (_write) then {
 		];
 	} else {
 		"ocap_exporter" callExtension format["{transferLocal;%1;%2;%3;%4;%5;%6}",
-			GVAR(exportCapFilename),
+			ocap_main_exportCapFilename),
 			_worldName,
 			_missionName,
 			_missionDuration,

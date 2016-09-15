@@ -19,26 +19,26 @@
 #include "\x\ocap\addons\main\script_component.hpp"
 params ["_victim","_killer"];
 
-if (_victim getVariable [QGVAR(exclude), false]) exitWith {}; // Just in case
+if (_victim getVariable ["ocap_main_exclude", false]) exitWith {}; // Just in case
 
-_victimId = _victim getVariable QGVAR(id);
+_victimId = _victim getVariable "ocap_main_id";
 
 // If killer is null, then unit likely killed by fire/collision/exploding vehicle
-_eventData = [GVAR(FrameNo), "killed", _victimId, ["null"], -1];
+_eventData = [ocap_main_FrameNo, "killed", _victimId, ["null"], -1];
 if (!isNull _killer) then {
 
 	_killerInfo = [];
 	if (_killer isKindOf "CAManBase") then {
 		_killerInfo = [
-			_killer getVariable QGVAR(id),
+			_killer getVariable "ocap_main_id",
 			getText (configFile >> "CfgWeapons" >> currentWeapon _killer >> "displayName")
 		];
 	} else {
-		_killerInfo = [_killer getVariable QGVAR(id)];
+		_killerInfo = [_killer getVariable "ocap_main_id"];
 	};
 
 	_eventData = [
-		GVAR(FrameNo),
+		ocap_main_FrameNo,
 		"killed",
 		_victimId,
 		_killerInfo,
@@ -47,6 +47,6 @@ if (!isNull _killer) then {
 };
 
 // Add event to eventsData
-GVAR(eventsData) pushBack _eventData;
+ocap_main_eventsData pushBack _eventData;
 
-if (GVAR(debug)) then {systemChat format["%1 was killed by %2", name _victim, name _killer]};
+if (ocap_main_debug) then {systemChat format["%1 was killed by %2", name _victim, name _killer]};

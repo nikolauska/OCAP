@@ -20,9 +20,8 @@
 
 <p align="center">
     <sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases">CBA A3</a>.</strong></sup>
+    <sup><strong><a href="http://www.3commandobrigade.com:8080/ocap-demo/">Live Web Demo</a></strong></sup>
 </p>
-
-### [Live Web Demo](http://www.3commandobrigade.com:8080/ocap-demo/)
 
 ## What is it?
 OCAP is a **game-changing** tool that allows the recording and playback of operations on an interactive (web-based) map.

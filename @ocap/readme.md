@@ -1,26 +1,3 @@
-<p align="center">
-    <img src="https://camo.githubusercontent.com/9a4e1469755474a39f85f2e37c239d665f0eddbd/68747470733a2f2f692e696d6775722e636f6d2f345a313642384a2e706e67" width="480">
-</p>
-
-<p align="center">
-    <a href="https://github.com/mistergoodson/OCAP/releases/latest">
-        <img src="https://img.shields.io/badge/Version-0.5.1-blue.svg?style=flat-square" alt="OCAP Version">
-    </a>
-    <a href="https://github.com/mistergoodson/OCAP/issues">
-        <img src="https://img.shields.io/github/issues-raw/mistergoodson/OCAP.svg?style=flat-square&label=Issues" alt="OCAP Issues">
-    </a>
-    <a href="https://github.com/mistergoodson/OCAP/releases">
-        <img src="https://img.shields.io/github/downloads/mistergoodson/OCAP/total.svg?style=flat-square&label=Downloads" alt="OCAP Downloads">
-    </a>
-    <a href="https://github.com/mistergoodson/OCAP/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/License-GPLv3-red.svg?style=flat-square" alt="OCAP License">
-    </a>
-</p>
-
-<p align="center">
-    <sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases">CBA A3</a>.</strong></sup>
-</p>
-
 ## Installation
 
 - Copy & paste @ocap into your Arma 3 mods directory.

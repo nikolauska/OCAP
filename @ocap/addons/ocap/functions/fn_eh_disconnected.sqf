@@ -9,10 +9,11 @@
 	Parameters:
 	_this: OBJECT - Entity that disconnected.
 */
-_name = _this;
+#include "\x\ocap\addons\main\script_component.hpp"
 
-ocap_eventsData pushBack [
-	ocap_captureFrameNo,
+_name = _this;
+GVAR(eventsData) pushBack [
+	GVAR(FrameNo),
 	"disconnected",
 	_name
 ];
